@@ -21,6 +21,18 @@ const userSchema = new mongoose.Schema({
     type: String,
   },
 
+  gender: {
+    type: String,
+  },
+
+  phoneNumber: {
+    type: String,
+  },
+
+  address: {
+    type: String,
+  },
+
   role: {
     type: String,
     trim: true,
