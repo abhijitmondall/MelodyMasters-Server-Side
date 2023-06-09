@@ -36,16 +36,16 @@ exports.getAllClasses = catchAsync(async (req, res, next) => {
 
 // Get Class By IDs
 exports.getClass = catchAsync(async (req, res, next) => {
-  const Class = await Class.findById(req.params.id);
+  const musicClass = await Class.findById(req.params.id);
 
-  if (!Class)
+  if (!musicClass)
     return next(
       new AppError(`No Class found with this ID: ${req.params.id}`, 404)
     );
 
   res.status(200).json({
     status: 'success',
-    Class,
+    class: musicClass,
   });
 });
 
@@ -61,7 +61,7 @@ exports.createClass = catchAsync(async (req, res, next) => {
 
 // Update Class
 exports.updateClass = catchAsync(async (req, res, next) => {
-  const Class = await Class.findByIdAndUpdate(
+  const musicClass = await Class.findByIdAndUpdate(
     req.params.id,
     getReqBodyData(req),
     {
@@ -70,22 +70,22 @@ exports.updateClass = catchAsync(async (req, res, next) => {
     }
   );
 
-  if (!Class)
+  if (!musicClass)
     return next(
       new AppError(`No Class found with this ID: ${req.params.id}`, 404)
     );
 
   res.status(200).json({
     status: 'success',
-    Class,
+    class: musicClass,
   });
 });
 
 // Delete Class
 exports.deleteClass = catchAsync(async (req, res, next) => {
-  const Class = await Class.findByIdAndDelete(req.params.id);
+  const musicClass = await Class.findByIdAndDelete(req.params.id);
 
-  if (!Class) {
+  if (!musicClass) {
     return next(
       new AppError(`No Class found with this ID: ${req.params.id}`, 404)
     );

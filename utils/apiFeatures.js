@@ -62,16 +62,10 @@ class ApiFeatures {
     if (this.queryString.text) {
       const queryObj = { ...this.queryString };
 
-      // /[^A-Za-z0-9_.]/.match(queryObj.text.search);
-
-      // const regex = /[^A-Za-z0-9_.]/.match(queryObj.text.search);
       console.log(queryObj.text.search);
       this.query = this.query.find({
         toyName: { $regex: new RegExp(queryObj.text.search, 'i') },
       });
-      // this.query = this.query.find({
-      //   $text: { $search: queryObj.text.search, $diacriticSensitive: true },
-      // });
     }
     return this;
   }
