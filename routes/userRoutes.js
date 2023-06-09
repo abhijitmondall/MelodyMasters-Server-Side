@@ -1,6 +1,9 @@
 const express = require('express');
 const userController = require('./../controllers/userController');
+const authController = require('./../controllers/authController');
 const router = express.Router();
+
+router.route('/jwt/:email').get(authController.jwt);
 
 router
   .route('/')
@@ -10,7 +13,15 @@ router
 router
   .route('/:id')
   .get(userController.getUser)
-  .patch(userController.updateUser)
-  .delete(userController.deleteUser);
+  .patch(
+    authController.protected,
+    authController.restrictTo('admin'),
+    userController.updateUser
+  )
+  .delete(
+    authController.protected,
+    authController.restrictTo('admin'),
+    userController.deleteUser
+  );
 
 module.exports = router;

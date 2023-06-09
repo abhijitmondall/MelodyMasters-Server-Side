@@ -1,4 +1,5 @@
 const classController = require('./../controllers/classController');
+const authController = require('./../controllers/authController');
 
 const express = require('express');
 const router = express.Router();
@@ -6,12 +7,24 @@ const router = express.Router();
 router
   .route('/')
   .get(classController.getAllClasses)
-  .post(classController.createClass);
+  .post(
+    authController.protected,
+    authController.restrictTo('instructor, admin'),
+    classController.createClass
+  );
 
 router
   .route('/:id')
   .get(classController.getClass)
-  .patch(classController.updateClass)
-  .delete(classController.deleteClass);
+  .patch(
+    authController.protected,
+    authController.restrictTo('instructor, admin'),
+    classController.updateClass
+  )
+  .delete(
+    authController.protected,
+    authController.restrictTo('instructor, admin'),
+    classController.deleteClass
+  );
 
 module.exports = router;
