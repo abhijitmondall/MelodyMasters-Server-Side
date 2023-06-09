@@ -36,7 +36,7 @@ exports.getAllClasses = catchAsync(async (req, res, next) => {
 
 // Get Class By IDs
 exports.getClass = catchAsync(async (req, res, next) => {
-  const musicClass = await Class.findById(req.params.id);
+  const musicClass = await Class.findById(req.params.id).select('-__v');
 
   if (!musicClass)
     return next(

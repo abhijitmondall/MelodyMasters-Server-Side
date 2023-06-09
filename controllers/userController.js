@@ -2,7 +2,7 @@ const catchAsync = require('../utils/catchAsync');
 const User = require('./../models/userModel');
 
 exports.getAllUsers = catchAsync(async (req, res) => {
-  const users = await User.find();
+  const users = await User.find().select('-__v');
   res.status(200).json({
     status: 'success',
     results: users.length,
@@ -13,7 +13,7 @@ exports.getAllUsers = catchAsync(async (req, res) => {
 });
 
 exports.getUser = catchAsync(async (req, res) => {
-  const user = await User.findById(req.params.id);
+  const user = await User.findById(req.params.id).select('-__v');
 
   if (!user)
     return next(
