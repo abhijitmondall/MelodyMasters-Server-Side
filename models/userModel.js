@@ -37,11 +37,11 @@ const userSchema = new mongoose.Schema({
     type: String,
     trim: true,
     enum: {
-      values: ['student', 'instructor', 'admin'],
+      values: ['Student', 'Instructor', 'Admin'],
       message:
-        'A Class must have a status either: (student, instructor, admin)!',
+        'A Class must have a status either: (Student, Instructor, Admin)!',
     },
-    default: 'student',
+    default: 'Student',
   },
 
   classes: {
