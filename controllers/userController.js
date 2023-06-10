@@ -30,6 +30,11 @@ exports.getUser = catchAsync(async (req, res, next) => {
 });
 
 exports.createUser = catchAsync(async (req, res, next) => {
+  const existingUser = await User.findOne({ email: req.body.email });
+
+  if (existingUser)
+    return res.status(200).json({ message: 'User already exists!' });
+
   const user = await User.create(req.body);
 
   res.status(201).json({
