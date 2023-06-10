@@ -21,6 +21,10 @@ const classSchema = new mongoose.Schema(
       type: String,
     },
 
+    instructorPhoto: {
+      type: String,
+    },
+
     totalSeats: {
       type: Number,
       // required: [true, 'A Class must have a Seats!'],

@@ -2,6 +2,17 @@ const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 const User = require('./../models/userModel');
 
+const getUserData = (req) => {
+  return {
+    name: req.body.name,
+    email: req.body.email,
+    photo: req.body.photo,
+    gender: req.body.gender,
+    phoneNumber: req.body.phoneNumber,
+    address: req.body.address,
+  };
+};
+
 exports.getAllUsers = catchAsync(async (req, res, next) => {
   const users = await User.find().select('-__v');
   res.status(200).json({
@@ -35,7 +46,7 @@ exports.createUser = catchAsync(async (req, res, next) => {
   if (existingUser)
     return res.status(200).json({ message: 'User already exists!' });
 
-  const user = await User.create(req.body);
+  const user = await User.create(getUserData(req));
 
   res.status(201).json({
     status: 'success',
@@ -75,5 +86,33 @@ exports.deleteUser = catchAsync(async (req, res, next) => {
   res.status(204).json({
     status: 'success',
     data: null,
+  });
+});
+
+exports.getTopSixInstructors = catchAsync(async (req, res, next) => {
+  const instructors = await User.aggregate([
+    {
+      $match: { role: 'instructor' },
+    },
+
+    {
+      $sort: { students: -1 },
+    },
+
+    {
+      $project: {
+        __v: 0,
+      },
+    },
+
+    {
+      $limit: 6,
+    },
+  ]);
+
+  res.status(200).json({
+    status: 'success',
+    results: instructors.length,
+    instructors,
   });
 });

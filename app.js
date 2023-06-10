@@ -18,10 +18,10 @@ if (process.env.NODE_ENV === 'development') {
 app.use(cors());
 app.use(express.json());
 
-// User Route
+// Users Route
 app.use('/api/v1/users', userRouter);
 
-// Class Route
+// Classes Route
 app.use('/api/v1/classes', classRouter);
 
 app.all('*', (req, res, next) => {

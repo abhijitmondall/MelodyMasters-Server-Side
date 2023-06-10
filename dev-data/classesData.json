@@ -1,60 +1,84 @@
 [
   {
-    "classImage": "image1.jpg",
+    "classImage": "https://i.ibb.co/M8GwzdP/slide-1.jpg",
     "className": "Yoga Class",
     "instructorName": "John Doe",
     "instructorEmail": "john.doe@example.com",
-
+    "instructorPhoto": "https://i.ibb.co/z6BSTQ2/user-photo.jpg",
+    "totalSeats": 100,
+    "enrolledStudents": 80,
     "price": 20,
     "ratings": 4.7,
     "status": "Approved"
   },
   {
-    "classImage": "image2.jpg",
+    "classImage": "https://i.ibb.co/M8GwzdP/slide-1.jpg",
     "className": "Pilates Class",
     "instructorName": "Jane Smith",
     "instructorEmail": "jane.smith@example.com",
-
+    "instructorPhoto": "https://i.ibb.co/z6BSTQ2/user-photo.jpg",
+    "totalSeats": 150,
+    "enrolledStudents": 50,
     "price": 25,
     "ratings": 4.2,
     "status": "Pending"
   },
   {
-    "classImage": "image3.jpg",
+    "classImage": "https://i.ibb.co/M8GwzdP/slide-1.jpg",
     "className": "Zumba Class",
     "instructorName": "Alex Johnson",
     "instructorEmail": "alex.johnson@example.com",
-
+    "instructorPhoto": "https://i.ibb.co/z6BSTQ2/user-photo.jpg",
+    "totalSeats": 200,
+    "enrolledStudents": 30,
     "price": 15,
     "ratings": 4.9,
     "status": "Approved"
   },
   {
-    "classImage": "image4.jpg",
+    "classImage": "https://i.ibb.co/M8GwzdP/slide-1.jpg",
     "className": "Kickboxing Class",
     "instructorName": "Michael Brown",
     "instructorEmail": "michael.brown@example.com",
-
+    "instructorPhoto": "https://i.ibb.co/z6BSTQ2/user-photo.jpg",
+    "totalSeats": 300,
+    "enrolledStudents": 150,
     "price": 30,
     "ratings": 4.6,
     "status": "Draft"
   },
   {
-    "classImage": "image5.jpg",
+    "classImage": "https://i.ibb.co/M8GwzdP/slide-1.jpg",
     "className": "Pilates Class",
     "instructorName": "Emily Davis",
     "instructorEmail": "emily.davis@example.com",
-
+    "instructorPhoto": "https://i.ibb.co/z6BSTQ2/user-photo.jpg",
+    "totalSeats": 500,
+    "enrolledStudents": 250,
     "price": 25,
     "ratings": 4.4,
     "status": "Pending"
   },
   {
-    "classImage": "image6.jpg",
+    "classImage": "https://i.ibb.co/M8GwzdP/slide-1.jpg",
     "className": "Yoga Class",
     "instructorName": "David Wilson",
     "instructorEmail": "david.wilson@example.com",
-
+    "instructorPhoto": "https://i.ibb.co/z6BSTQ2/user-photo.jpg",
+    "totalSeats": 100,
+    "enrolledStudents": 20,
+    "price": 20,
+    "ratings": 4.8,
+    "status": "Approved"
+  },
+  {
+    "classImage": "https://i.ibb.co/M8GwzdP/slide-1.jpg",
+    "className": "Yoga Class 2",
+    "instructorName": "David Wilson",
+    "instructorEmail": "david.wilson@example.com",
+    "instructorPhoto": "https://i.ibb.co/z6BSTQ2/user-photo.jpg",
+    "totalSeats": 50,
+    "enrolledStudents": 10,
     "price": 20,
     "ratings": 4.8,
     "status": "Approved"

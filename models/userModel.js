@@ -47,11 +47,13 @@ const userSchema = new mongoose.Schema({
   classes: {
     type: Number,
     min: 0,
+    default: 0,
   },
 
   students: {
     type: Number,
     min: 0,
+    default: 0,
   },
 });
 

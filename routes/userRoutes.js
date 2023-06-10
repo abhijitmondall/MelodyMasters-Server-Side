@@ -4,6 +4,7 @@ const authController = require('./../controllers/authController');
 const router = express.Router();
 
 router.route('/jwt/:email').get(authController.jwt);
+router.route('/top-6-instructors').get(userController.getTopSixInstructors);
 
 router
   .route('/')
