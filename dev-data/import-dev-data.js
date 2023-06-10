@@ -5,7 +5,7 @@ dotenv.config({
   path: './config.env',
 });
 
-const Class = require('../models/classModel');
+const MelodyClass = require('../models/classModel');
 
 const DB = process.env.DATABASE.replace(
   '<PASSWORD>',
@@ -29,7 +29,7 @@ const classes = JSON.parse(
 // Import Data Into DB
 const importData = async () => {
   try {
-    await Class.create(classes);
+    await MelodyClass.create(classes);
     console.log('Data Imported Successfully');
   } catch (err) {
     console.log('Failed to Import', err);
@@ -40,7 +40,7 @@ const importData = async () => {
 // Delete All Data From DB
 const deleteData = async () => {
   try {
-    await Toys.deleteMany();
+    await MelodyClass.deleteMany();
     console.log('Data Deleted Successfully');
   } catch (err) {
     console.log('Failed to Delete', err);

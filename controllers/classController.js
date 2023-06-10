@@ -1,4 +1,4 @@
-const Class = require('../models/classModel');
+const MelodyClass = require('../models/classModel');
 const ApiFeatures = require('../utils/apiFeatures');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
@@ -9,7 +9,9 @@ const getReqBodyData = (req) => {
     className: req.body.className,
     instructorName: req.body.instructorName,
     instructorEmail: req.body.instructorEmail,
+    totalSeats: req.body.totalSeats,
     availableSeats: req.body.availableSeats,
+    enrolledStudents: req.body.enrolledStudents,
     price: req.body.price,
     ratings: req.body.ratings,
     status: req.body.status,
@@ -18,7 +20,7 @@ const getReqBodyData = (req) => {
 
 // Get All Classes With Query
 exports.getAllClasses = catchAsync(async (req, res, next) => {
-  const features = new ApiFeatures(Class.find(), req.query)
+  const features = new ApiFeatures(MelodyClass.find(), req.query)
     .filter()
     .sort()
     .limitFields()
@@ -36,22 +38,22 @@ exports.getAllClasses = catchAsync(async (req, res, next) => {
 
 // Get Class By IDs
 exports.getClass = catchAsync(async (req, res, next) => {
-  const musicClass = await Class.findById(req.params.id).select('-__v');
+  const melodyClass = await MelodyClass.findById(req.params.id).select('-__v');
 
-  if (!musicClass)
+  if (!melodyClass)
     return next(
       new AppError(`No Class found with this ID: ${req.params.id}`, 404)
     );
 
   res.status(200).json({
     status: 'success',
-    class: musicClass,
+    class: melodyClass,
   });
 });
 
 // Create Class
 exports.createClass = catchAsync(async (req, res, next) => {
-  const newClass = await Class.create(getReqBodyData(req));
+  const newClass = await MelodyClass.create(getReqBodyData(req));
 
   res.status(201).json({
     status: 'success',
@@ -61,7 +63,7 @@ exports.createClass = catchAsync(async (req, res, next) => {
 
 // Update Class
 exports.updateClass = catchAsync(async (req, res, next) => {
-  const musicClass = await Class.findByIdAndUpdate(
+  const melodyClass = await MelodyClass.findByIdAndUpdate(
     req.params.id,
     getReqBodyData(req),
     {
@@ -70,22 +72,22 @@ exports.updateClass = catchAsync(async (req, res, next) => {
     }
   );
 
-  if (!musicClass)
+  if (!melodyClass)
     return next(
       new AppError(`No Class found with this ID: ${req.params.id}`, 404)
     );
 
   res.status(200).json({
     status: 'success',
-    class: musicClass,
+    class: melodyClass,
   });
 });
 
 // Delete Class
 exports.deleteClass = catchAsync(async (req, res, next) => {
-  const musicClass = await Class.findByIdAndDelete(req.params.id);
+  const melodyClass = await MelodyClass.findByIdAndDelete(req.params.id);
 
-  if (!musicClass) {
+  if (!melodyClass) {
     return next(
       new AppError(`No Class found with this ID: ${req.params.id}`, 404)
     );

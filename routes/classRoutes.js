@@ -9,7 +9,7 @@ router
   .get(classController.getAllClasses)
   .post(
     authController.protected,
-    authController.restrictTo('instructor, admin'),
+    authController.restrictTo('instructor', 'admin'),
     classController.createClass
   );
 
@@ -18,12 +18,12 @@ router
   .get(classController.getClass)
   .patch(
     authController.protected,
-    authController.restrictTo('instructor, admin'),
+    authController.restrictTo('instructor', 'admin'),
     classController.updateClass
   )
   .delete(
     authController.protected,
-    authController.restrictTo('instructor, admin'),
+    authController.restrictTo('instructor', 'admin'),
     classController.deleteClass
   );
 

@@ -75,6 +75,7 @@ exports.restrictTo = (...roles) => {
         new AppError('You don not have permission to perform this action!', 403)
       );
     }
+
     next();
   };
 };

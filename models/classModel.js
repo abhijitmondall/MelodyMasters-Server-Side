@@ -1,60 +1,93 @@
 const mongoose = require('mongoose');
 
-const classSchema = new mongoose.Schema({
-  classImage: {
-    type: String,
-  },
+const classSchema = new mongoose.Schema(
+  {
+    classImage: {
+      type: String,
+    },
 
-  className: {
-    type: String,
-    index: true,
-    trim: true,
-    required: [true, 'A Class must have a name!'],
-  },
+    className: {
+      type: String,
+      index: true,
+      trim: true,
+      required: [true, 'A Class must have a name!'],
+    },
 
-  instructorName: {
-    type: String,
-  },
+    instructorName: {
+      type: String,
+    },
 
-  instructorEmail: {
-    type: String,
-  },
+    instructorEmail: {
+      type: String,
+    },
 
-  availableSeats: {
-    type: Number,
-    required: [true, 'A Class must have a Seats!'],
-    min: 0,
-  },
+    totalSeats: {
+      type: Number,
+      // required: [true, 'A Class must have a Seats!'],
+      min: 0,
+      default: 20,
+    },
 
-  price: {
-    type: Number,
-    required: [true, 'A Class must have a price!'],
-    min: 0,
-  },
+    // availableSeats: {
+    //   type: Number,
+    //   min: 0,
+    // },
 
-  ratings: {
-    type: Number,
-    default: 4.5,
-    min: 0,
-    max: 5,
-  },
+    enrolledStudents: {
+      type: Number,
+      min: 0,
+      default: 10,
 
-  status: {
-    type: String,
-    default: 'Pending',
-    enum: {
-      values: ['Pending', 'Approved', 'Draft'],
-      message: 'A Class must have a status either: (Pending, Approved, Draft)!',
+      validate: {
+        validator: function (val) {
+          return val <= this.totalSeats;
+        },
+
+        message: 'Enrollment is not available! All Seats are filled!',
+      },
+    },
+
+    price: {
+      type: Number,
+      required: [true, 'A Class must have a price!'],
+      min: 0,
+    },
+
+    ratings: {
+      type: Number,
+      default: 4.5,
+      min: 0,
+      max: 5,
+    },
+
+    status: {
+      type: String,
+      default: 'Pending',
+      enum: {
+        values: ['Pending', 'Approved', 'Draft'],
+        message:
+          'A Class must have a status either: (Pending, Approved, Draft)!',
+      },
+    },
+
+    createdAt: {
+      type: Date,
+      default: Date.now(),
+      select: false,
     },
   },
+  {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
+  }
+);
 
-  createdAt: {
-    type: Date,
-    default: Date.now(),
-    select: false,
-  },
+// Virtual properties
+// Calculate availableSeats and send to the end users
+classSchema.virtual('availableSeats').get(function () {
+  return this.totalSeats - this.enrolledStudents;
 });
 
-const Class = mongoose.model('Class', classSchema);
+const MelodyClass = mongoose.model('MelodyClass', classSchema);
 
-module.exports = Class;
+module.exports = MelodyClass;

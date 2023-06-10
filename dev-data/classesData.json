@@ -4,7 +4,7 @@
     "className": "Yoga Class",
     "instructorName": "John Doe",
     "instructorEmail": "john.doe@example.com",
-    "availableSeats": 10,
+
     "price": 20,
     "ratings": 4.7,
     "status": "Approved"
@@ -14,7 +14,7 @@
     "className": "Pilates Class",
     "instructorName": "Jane Smith",
     "instructorEmail": "jane.smith@example.com",
-    "availableSeats": 15,
+
     "price": 25,
     "ratings": 4.2,
     "status": "Pending"
@@ -24,7 +24,7 @@
     "className": "Zumba Class",
     "instructorName": "Alex Johnson",
     "instructorEmail": "alex.johnson@example.com",
-    "availableSeats": 20,
+
     "price": 15,
     "ratings": 4.9,
     "status": "Approved"
@@ -34,7 +34,7 @@
     "className": "Kickboxing Class",
     "instructorName": "Michael Brown",
     "instructorEmail": "michael.brown@example.com",
-    "availableSeats": 12,
+
     "price": 30,
     "ratings": 4.6,
     "status": "Draft"
@@ -44,7 +44,7 @@
     "className": "Pilates Class",
     "instructorName": "Emily Davis",
     "instructorEmail": "emily.davis@example.com",
-    "availableSeats": 18,
+
     "price": 25,
     "ratings": 4.4,
     "status": "Pending"
@@ -54,7 +54,7 @@
     "className": "Yoga Class",
     "instructorName": "David Wilson",
     "instructorEmail": "david.wilson@example.com",
-    "availableSeats": 15,
+
     "price": 20,
     "ratings": 4.8,
     "status": "Approved"
