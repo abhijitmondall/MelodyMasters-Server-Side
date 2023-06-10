@@ -92,7 +92,7 @@ exports.deleteUser = catchAsync(async (req, res, next) => {
 exports.getInstructors = catchAsync(async (req, res, next) => {
   const limitInstructors = parseInt(req.query.limit);
 
-  const instructors = await User.aggregate([
+  let pipeline = [
     {
       $match: { role: 'instructor' },
     },
@@ -106,11 +106,15 @@ exports.getInstructors = catchAsync(async (req, res, next) => {
         __v: 0,
       },
     },
+  ];
 
-    {
+  if (!isNaN(limitInstructors)) {
+    pipeline.push({
       $limit: limitInstructors,
-    },
-  ]);
+    });
+  }
+
+  const instructors = await User.aggregate(pipeline);
 
   res.status(200).json({
     status: 'success',
