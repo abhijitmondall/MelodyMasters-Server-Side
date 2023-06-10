@@ -1,3 +1,4 @@
+const ApiFeatures = require('../utils/apiFeatures');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 const User = require('./../models/userModel');
@@ -14,7 +15,15 @@ const getUserData = (req) => {
 };
 
 exports.getAllUsers = catchAsync(async (req, res, next) => {
-  const users = await User.find().select('-__v');
+  const features = new ApiFeatures(User.find(), req.query)
+    .filter()
+    .sort()
+    .limitFields()
+    .paginate()
+    .search();
+
+  const users = await features.query;
+
   res.status(200).json({
     status: 'success',
     results: users.length,
