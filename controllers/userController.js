@@ -89,7 +89,9 @@ exports.deleteUser = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.getTopSixInstructors = catchAsync(async (req, res, next) => {
+exports.getInstructors = catchAsync(async (req, res, next) => {
+  const limitInstructors = parseInt(req.query.limit);
+
   const instructors = await User.aggregate([
     {
       $match: { role: 'instructor' },
@@ -106,7 +108,7 @@ exports.getTopSixInstructors = catchAsync(async (req, res, next) => {
     },
 
     {
-      $limit: 6,
+      $limit: limitInstructors,
     },
   ]);
 
