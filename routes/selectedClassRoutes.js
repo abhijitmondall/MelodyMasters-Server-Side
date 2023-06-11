@@ -6,20 +6,15 @@ const selectedClassController = require('./../controllers/selectedClassControlle
 
 router
   .route('/')
-  .get(selectedClassController.getAllSelectedClasses)
+  .get(authController.protected, selectedClassController.getAllSelectedClasses)
   .post(authController.protected, selectedClassController.createSelectedClass);
 
 router
   .route('/:id')
-  .get(selectedClassController.getSelectedClass)
-  .patch(
-    authController.protected,
-    authController.restrictTo('Instructor', 'Admin'),
-    selectedClassController.updateSelectedClass
-  )
+  .get(authController.protected, selectedClassController.getSelectedClass)
+  .patch(authController.protected, selectedClassController.updateSelectedClass)
   .delete(
     authController.protected,
-    authController.restrictTo('Instructor', 'Admin'),
     selectedClassController.deleteSelectedClass
   );
 
