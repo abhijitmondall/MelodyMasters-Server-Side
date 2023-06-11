@@ -103,7 +103,7 @@ exports.getInstructors = catchAsync(async (req, res, next) => {
 
   let pipeline = [
     {
-      $match: { role: 'instructor' },
+      $match: { role: 'Instructor' },
     },
 
     {
