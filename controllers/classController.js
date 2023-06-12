@@ -9,6 +9,7 @@ const getReqBodyData = (req) => {
     className: req.body.className,
     instructorName: req.body.instructorName,
     instructorEmail: req.body.instructorEmail,
+    instructorPhoto: req.body.instructorPhoto,
     totalSeats: req.body.totalSeats,
     availableSeats: req.body.availableSeats,
     enrolledStudents: req.body.enrolledStudents,

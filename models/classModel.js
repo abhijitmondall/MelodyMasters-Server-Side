@@ -66,6 +66,11 @@ const classSchema = new mongoose.Schema(
       },
     },
 
+    feedback: {
+      type: String,
+      max: 255,
+    },
+
     createdAt: {
       type: Date,
       default: Date.now(),
