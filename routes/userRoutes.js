@@ -16,12 +16,12 @@ router
   .get(userController.getUser)
   .patch(
     authController.protected,
-    authController.restrictTo('admin'),
+    authController.restrictTo('Admin'),
     userController.updateUser
   )
   .delete(
     authController.protected,
-    authController.restrictTo('admin'),
+    authController.restrictTo('Admin'),
     userController.deleteUser
   );
 

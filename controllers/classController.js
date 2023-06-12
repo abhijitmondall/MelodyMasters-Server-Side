@@ -16,6 +16,7 @@ const getReqBodyData = (req) => {
     price: req.body.price,
     ratings: req.body.ratings,
     status: req.body.status,
+    feedback: req.body.feedback,
   };
 };
 

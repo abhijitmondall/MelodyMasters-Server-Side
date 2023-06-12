@@ -68,7 +68,7 @@ const classSchema = new mongoose.Schema(
 
     feedback: {
       type: String,
-      max: 255,
+      max: 300,
     },
 
     createdAt: {
