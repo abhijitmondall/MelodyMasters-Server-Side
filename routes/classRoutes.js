@@ -15,11 +15,7 @@ router
 router
   .route('/:id')
   .get(classController.getClass)
-  .patch(
-    authController.protected,
-    authController.restrictTo('Instructor', 'Admin'),
-    classController.updateClass
-  )
+  .patch(authController.protected, classController.updateClass)
   .delete(
     authController.protected,
     authController.restrictTo('Instructor', 'Admin'),

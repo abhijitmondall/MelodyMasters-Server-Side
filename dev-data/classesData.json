@@ -21,7 +21,7 @@
     "enrolledStudents": 50,
     "price": 25,
     "ratings": 4.2,
-    "status": "Pending"
+    "status": "Approved"
   },
   {
     "classImage": "https://i.ibb.co/M8GwzdP/slide-1.jpg",
@@ -45,7 +45,7 @@
     "enrolledStudents": 150,
     "price": 30,
     "ratings": 4.6,
-    "status": "Draft"
+    "status": "Approved"
   },
   {
     "classImage": "https://i.ibb.co/M8GwzdP/slide-1.jpg",
@@ -57,7 +57,7 @@
     "enrolledStudents": 250,
     "price": 25,
     "ratings": 4.4,
-    "status": "Pending"
+    "status": "Approved"
   },
   {
     "classImage": "https://i.ibb.co/M8GwzdP/slide-1.jpg",
@@ -74,6 +74,18 @@
   {
     "classImage": "https://i.ibb.co/M8GwzdP/slide-1.jpg",
     "className": "Yoga Class 2",
+    "instructorName": "David Wilson",
+    "instructorEmail": "david.wilson@example.com",
+    "instructorPhoto": "https://i.ibb.co/z6BSTQ2/user-photo.jpg",
+    "totalSeats": 50,
+    "enrolledStudents": 10,
+    "price": 20,
+    "ratings": 4.8,
+    "status": "Approved"
+  },
+  {
+    "classImage": "https://i.ibb.co/M8GwzdP/slide-1.jpg",
+    "className": "Yoga Class 4 ",
     "instructorName": "David Wilson",
     "instructorEmail": "david.wilson@example.com",
     "instructorPhoto": "https://i.ibb.co/z6BSTQ2/user-photo.jpg",

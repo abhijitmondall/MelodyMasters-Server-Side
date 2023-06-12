@@ -29,7 +29,7 @@ const classSchema = new mongoose.Schema(
       type: Number,
       // required: [true, 'A Class must have a Seats!'],
       min: 0,
-      default: 20,
+      default: 0,
     },
 
     // availableSeats: {
@@ -40,15 +40,7 @@ const classSchema = new mongoose.Schema(
     enrolledStudents: {
       type: Number,
       min: 0,
-      default: 10,
-
-      validate: {
-        validator: function (val) {
-          return val <= this.totalSeats;
-        },
-
-        message: 'Enrollment is not available! All Seats are filled!',
-      },
+      default: 0,
     },
 
     price: {
@@ -68,9 +60,9 @@ const classSchema = new mongoose.Schema(
       type: String,
       default: 'Pending',
       enum: {
-        values: ['Pending', 'Approved', 'Draft'],
+        values: ['Pending', 'Approved', 'Deny'],
         message:
-          'A Class must have a status either: (Pending, Approved, Draft)!',
+          'A Class must have a status either: (Pending, Approved, Deny)!',
       },
     },
 

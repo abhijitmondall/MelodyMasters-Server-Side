@@ -1,6 +1,12 @@
 const mongoose = require('mongoose');
+const validator = require('validator');
 
-const selectedClassSchema = new mongoose.Schema({
+const enrolledUserSchema = new mongoose.Schema({
+  userName: {
+    type: String,
+    trim: true,
+  },
+
   email: {
     type: String,
     lowercase: true,
@@ -9,6 +15,11 @@ const selectedClassSchema = new mongoose.Schema({
   },
 
   classID: {
+    type: String,
+    required: true,
+  },
+
+  transactionId: {
     type: String,
     required: true,
   },
@@ -30,24 +41,23 @@ const selectedClassSchema = new mongoose.Schema({
     min: 0,
   },
 
-  status: {
-    type: String,
-    default: 'Selected',
-    enum: ['Selected', 'Enrolled'],
-  },
-
   enrolledStudents: {
     type: Number,
     min: 0,
   },
 
+  status: {
+    type: String,
+    default: 'Paid',
+  },
+
   createdAt: {
     type: Date,
     default: Date.now(),
-    select: false,
+    // select: false,
   },
 });
 
-const SelectedClass = mongoose.model('SelectedClass', selectedClassSchema);
+const EnrolledUser = mongoose.model('EnrolledUser', enrolledUserSchema);
 
-module.exports = SelectedClass;
+module.exports = EnrolledUser;
