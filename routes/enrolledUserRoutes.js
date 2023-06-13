@@ -5,7 +5,7 @@ const router = express.Router();
 
 router
   .route('/')
-  .get(authController.protected, enrolledUserController.getAllEnrolledUsers)
+  .get(enrolledUserController.getAllEnrolledUsers)
   .post(authController.protected, enrolledUserController.createEnrolledUser);
 
 router

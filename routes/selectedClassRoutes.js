@@ -6,7 +6,7 @@ const selectedClassController = require('./../controllers/selectedClassControlle
 
 router
   .route('/')
-  .get(authController.protected, selectedClassController.getAllSelectedClasses)
+  .get(selectedClassController.getAllSelectedClasses)
   .post(authController.protected, selectedClassController.createSelectedClass);
 
 router
