@@ -1,7 +1,14 @@
 const mongoose = require('mongoose');
 
 const selectedClassSchema = new mongoose.Schema({
-  email: {
+  userEmail: {
+    type: String,
+    lowercase: true,
+    trim: true,
+    required: true,
+  },
+
+  instructorEmail: {
     type: String,
     lowercase: true,
     trim: true,
@@ -21,7 +28,7 @@ const selectedClassSchema = new mongoose.Schema({
     type: String,
     index: true,
     trim: true,
-    required: [true, 'A Class must have a name!'],
+    required: [true, 'A Class must have a className!'],
   },
 
   price: {

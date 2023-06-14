@@ -5,6 +5,9 @@ const router = express.Router();
 
 router.route('/jwt/:email').get(authController.jwt);
 router.route('/instructors').get(userController.getInstructors);
+router
+  .route('/user-basic-update/:email')
+  .patch(authController.protected, userController.updateUserBasicInfo);
 
 router
   .route('/')

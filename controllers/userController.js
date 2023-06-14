@@ -84,6 +84,29 @@ exports.updateUser = catchAsync(async (req, res, next) => {
   });
 });
 
+exports.updateUserBasicInfo = catchAsync(async (req, res, next) => {
+  const user = await User.findOneAndUpdate(
+    { email: req.params.email },
+    { classes: req.body.classes, students: req.body.students },
+    {
+      new: true,
+      runValidators: true,
+    }
+  );
+
+  if (!user)
+    return next(
+      new AppError(`No User found with this ID: ${req.params.id}`, 404)
+    );
+
+  res.status(200).json({
+    status: 'success',
+    data: {
+      user,
+    },
+  });
+});
+
 exports.deleteUser = catchAsync(async (req, res, next) => {
   const user = await User.findByIdAndDelete(req.params.id);
 

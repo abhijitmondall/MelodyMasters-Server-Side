@@ -60,9 +60,9 @@ const classSchema = new mongoose.Schema(
       type: String,
       default: 'Pending',
       enum: {
-        values: ['Pending', 'Approved', 'Deny'],
+        values: ['Pending', 'Approved', 'Denied'],
         message:
-          'A Class must have a status either: (Pending, Approved, Deny)!',
+          'A Class must have a status either: (Pending, Approved, Denied)!',
       },
     },
 
